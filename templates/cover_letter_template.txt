@@ -1,0 +1,12 @@
+Dear {{ recruiter_name }},
+
+I am thrilled to apply for the {{ job_title }} position at {{ company_name }}. As a graduate student with a strong foundation in {{ key_skills }}, I am confident in my ability to excel in this role.
+
+At Illinois Institute of Technology, I honed my leadership skills as an Event Manager, overseeing complex logistics for high-profile events. My technical expertise, demonstrated in projects like the Social Media App and Inventory Management System, showcases my ability to deliver impactful solutions using technologies like {{ technologies_used }}.
+
+I am eager to bring my skills in {{ relevant_skills }} to your team. Please feel free to contact me at {{ email }} or {{ phone }}. I look forward to the opportunity to contribute to {{ company_name }}’s success.
+
+Thank you for your consideration.
+
+Sincerely,
+{{ name }}
