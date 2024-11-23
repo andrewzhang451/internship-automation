@@ -1,0 +1,28 @@
+{
+    "default": {
+        "url": "https://example.com/application-form",
+        "fields": {
+            "name": "name_field_id",
+            "email": "email_field_id",
+            "phone": "phone_field_id",
+            "linkedin": "linkedin_field_id",
+            "github": "github_field_id",
+            "resume_upload": "resume_field_id",
+            "cover_letter_upload": "cover_letter_field_id"
+        },
+        "submit_button": "submit_button_id"
+    },
+    "example_site": {
+        "url": "https://example2.com/apply",
+        "fields": {
+            "name": "full_name",
+            "email": "contact_email",
+            "phone": "contact_phone",
+            "linkedin": "linkedin_profile",
+            "github": "github_profile",
+            "resume_upload": "resume_upload_input",
+            "cover_letter_upload": "cover_letter_upload_input"
+        },
+        "submit_button": "apply_now_button"
+    }
+}

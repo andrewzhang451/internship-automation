@@ -2,6 +2,8 @@
     "name": "Andrew Zhang",
     "email": "andrew.zhang49@gmail.com",
     "phone": "773-791-2909",
-    "linkedin": "linkedin.com/in/andrew-zhang-b59a7b210/",
-    "github": "github.com/andrewzhang451"
+    "linkedin": "https://linkedin.com/in/andrew-zhang-b59a7b210/",
+    "github": "https://github.com/andrewzhang451",
+    "resume": "../data/Andrew_Zhang_Resume.pdf",
+    "cover_letter": "../data/cover_letter.pdf"
 }

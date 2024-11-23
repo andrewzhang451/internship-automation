@@ -1,28 +1,35 @@
+import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import json
 
-# Load resume info
+# Load configurations
+with open("../config/site_config.json", "r") as file:
+    site_config = json.load(file)
 with open("../data/resume_info.json", "r") as file:
-    resume_info = json.load(file)
+    personal_info = json.load(file)
 
-# Initialize WebDriver
-driver = webdriver.Chrome(executable_path="/path/to/chromedriver")
+def fill_form(site_key):
+    config = site_config[site_key]
+    fields = config["fields"]
 
-# Open the application form
-driver.get("https://application-form-link.com")
+    driver = webdriver.Chrome(executable_path="/path/to/chromedriver")
+    driver.get(config["url"])
 
-# Fill in the form
-driver.find_element(By.ID, "name").send_keys(resume_info["name"])
-driver.find_element(By.ID, "email").send_keys(resume_info["email"])
-driver.find_element(By.ID, "linkedin").send_keys(resume_info["linkedin"])
-driver.find_element(By.ID, "github").send_keys(resume_info["github"])
-driver.find_element(By.ID, "resume_upload").send_keys("../data/Andrew_Zhang_Resume.pdf")
-driver.find_element(By.ID, "cover_letter_upload").send_keys("../data/cover_letter_TechCorp.pdf")
+    # Fill out the form
+    driver.find_element(By.ID, fields["name"]).send_keys(personal_info["name"])
+    driver.find_element(By.ID, fields["email"]).send_keys(personal_info["email"])
+    driver.find_element(By.ID, fields["phone"]).send_keys(personal_info["phone"])
+    driver.find_element(By.ID, fields["linkedin"]).send_keys(personal_info["linkedin"])
+    driver.find_element(By.ID, fields["github"]).send_keys(personal_info["github"])
+    driver.find_element(By.ID, fields["resume_upload"]).send_keys(personal_info["resume"])
+    driver.find_element(By.ID, fields["cover_letter_upload"]).send_keys(personal_info["cover_letter"])
 
-# Submit the form
-driver.find_element(By.ID, "submit").click()
+    input("Complete any captchas or manual steps, then press Enter to continue...")
 
-print("Application form submitted successfully!")
+    # Submit the form
+    driver.find_element(By.ID, config["submit_button"]).click()
+    print("Form submitted successfully!")
+    driver.quit()
 
-driver.quit()
+# Example usage
+fill_form("default")

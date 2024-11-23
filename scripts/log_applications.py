@@ -1,27 +1,29 @@
 import csv
+from datetime import datetime
 
-# Log data
-application_data = {
-    "Company Name": "Tech Corp",
-    "Job Title": "Software Engineering Intern",
-    "Application Link": "https://application-form-link.com",
-    "Status": "Submitted",
-    "Notes": "Follow-up in 2 weeks"
-}
+def log_application(company_name, job_title, application_url, status="Submitted"):
+    log_file = "../applications.csv"
+    fields = ["Date", "Company Name", "Job Title", "Application URL", "Status"]
 
-# Write to CSV
-file_name = "../applications.csv"
-fields = ["Company Name", "Job Title", "Application Link", "Status", "Notes"]
+    data = {
+        "Date": datetime.now().strftime("%Y-%m-%d"),
+        "Company Name": company_name,
+        "Job Title": job_title,
+        "Application URL": application_url,
+        "Status": status
+    }
 
-try:
-    with open(file_name, "a", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=fields)
-        writer.writerow(application_data)
-except FileNotFoundError:
-    # Create a new file if not existing
-    with open(file_name, "w", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=fields)
-        writer.writeheader()
-        writer.writerow(application_data)
+    try:
+        with open(log_file, "a", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writerow(data)
+    except FileNotFoundError:
+        with open(log_file, "w", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+            writer.writerow(data)
 
-print("Application logged successfully!")
+    print(f"Application logged for {company_name} - {job_title}")
+
+# Example usage
+log_application("Tech Corp", "Software Engineering Intern", "https://example.com/application-form")
